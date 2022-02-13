@@ -1,0 +1,30 @@
+#container{
+    display: grid;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
+    width: 60vw;
+    height: 60vh ;
+    border-color: yellow;
+    border-style: solid;
+    border-width: 1px;
+    
+}
+
+
+.sleek {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+.pleek {
+    background-color: blueviolet;
+}
+
+
+button{
+    width: 50px;
+    height: 30px;
+    background-color: green;
+}

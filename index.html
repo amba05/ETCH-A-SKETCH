@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ETCH-A-SKETCH</title>
+  <link rel='stylesheet' href='style.css'>
+</head>
+
+
+  <body>
+    <h1>ETCH-A-SKETCH</h1>
+    <div>Click on the button to change the number of squares in the box  <button id='restart'> Clear </button></div>
+    <br>
+    <div id='container'></div>
+  </body>
+
+
+<script>
+    const container = document.getElementById('container')
+    let start_over = document.getElementById('restart')
+
+    
+    start_over.addEventListener('click', function() {
+      container.innerHTML = ''
+      let man = prompt('How many squares per side?  (Range 1 - 100)', 1)
+      if(isNaN(man) || parseInt(man) > 100) {
+        let fill = +prompt('Input a number between 1 and 100', 1)
+        
+        if(isNaN(fill) || parseInt(fill) > 100){
+          alert('Try Again')
+          action(16)
+        }
+
+        else {
+          action(fill)
+        }
+      }
+
+      else {
+        action(man)
+      }
+    })
+  
+
+    function action(man = 16) {
+      let total = man * man
+      let row = man
+      let column = man 
+
+      for (let i = 1; i <= total; i++){
+        const grids = document.createElement('div')
+        container.appendChild(grids)
+        container.style.setProperty('grid-template-columns', `repeat(${column}, 2fr)`)
+        container.style.setProperty('grid-template-rows', `repeat(${row}, 2fr)`)
+        grids.classList.add("sleek")
+        
+
+        grids.addEventListener('mouseover', rainbow)
+      }
+
+    }
+
+    action(16)
+
+    
+    function rainbow() {      
+      let r = Math.floor(Math.random() * 257)
+      let g = Math.floor(Math.random() * 257)
+      let b = Math.floor(Math.random() * 257)
+
+      
+
+      let color = `rgb(${r}, ${g}, ${b})`
+      this.style.setProperty('background-color', `${color}`)
+    }
+
+    
+
+</script>
+
+</html>
